@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Registro Cuartos de Equipos CACOM-1</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+
+background:white;
+padding:40px;
+border-radius:12px;
+width:400px;
+box-shadow:0px 10px 30px rgba(0,0,0,0.3);
+
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+label{
+font-weight:bold;
+}
+
+select,input,textarea{
+
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+
+}
+
+button{
+
+width:100%;
+padding:12px;
+background:#1d4ed8;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+
+}
+
+button:hover{
+background:#1e40af;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Registro Cuartos de Equipos</h2>
+
+<label>Nombre</label>
+<select id="nombre">
+
+<option>CT Tabares Zapata Verónica</option>
+<option>ST Agressoth Cardona Jassir</option>
+<option>ST Cruz Reinoso Juan</option>
+<option>T1 Paipilla Rodriguez German</option>
+<option>T1 Vidal Jhonier Alexander</option>
+<option>T4 Romero Berón Oscar</option>
+<option>TS18 Fredy Hernandez</option>
+
+</select>
+
+<label>Cuarto de equipo</label>
+
+<select id="cuarto">
+
+<option>ACCOFA</option>
+<option>INGENIERÍA</option>
+<option>ESM</option>
+<option>RADIOAYUDAS</option>
+<option>TANQUES Y PERCHAS</option>
+<option>GRUCO</option>
+
+</select>
+
+<label>Actividad</label>
+
+<select id="actividad">
+
+<option>Revista</option>
+<option>Acompañamiento</option>
+<option>Mantenimiento</option>
+<option>Otros</option>
+
+</select>
+
+<label>Observaciones</label>
+
+<textarea id="observaciones"></textarea>
+
+<button onclick="enviar()">Registrar ingreso</button>
+
+</div>
+
+<script>
+
+function enviar(){
+
+var datos={
+
+nombre:document.getElementById("nombre").value,
+cuarto:document.getElementById("cuarto").value,
+actividad:document.getElementById("actividad").value,
+observaciones:document.getElementById("observaciones").value
+
+};
+
+fetch("https://script.google.com/macros/s/AKfycbzhZys3K9JjtMDH7pRozzXHWHv000CV_FKaGPs86Yvc155LL1tBb0owR2PTQ7d5INZjgQ/exec",{
+
+method:"POST",
+body:JSON.stringify(datos)
+
+})
+.then(res=>alert("Registro guardado correctamente"))
+.catch(err=>alert("Error"));
+
+}
+
+</script>
+
+</body>
+
+</html>
