@@ -157,21 +157,25 @@ Cuartos de Equipos CACOM-1
 
 <label>Nombre</label>
 
-<select id="nombre" required>
+<input 
+type="text" 
+name="nombre" 
+list="listaNombres"
+placeholder="Escriba su nombre o selecciónelo del listado"
+required
+>
 
-<option value="" disabled selected>
-Elija su nombre del listado
-</option>
+<datalist id="listaNombres">
 
-<option>ST Agressoth Cardona Jassir</option>
-<option>ST Cruz Reinoso Juan</option>
-<option>T1 Paipilla Rodriguez German</option>
-<option>T1 Vidal Jhonier Alexander</option>
-<option>T4 Romero Berón Oscar</option>
-<option>AT Cala Guerrero Cristian</option>
-<option>TS18 Fredy Hernandez</option>
+<option value="CT Tabares Zapata Verónica">
+<option value="ST Agressoth Cardona Jassir">
+<option value="ST Cruz Reinoso Juan">
+<option value="T1 Paipilla Rodriguez German">
+<option value="T1 Vidal Jhonier Alexander">
+<option value="T4 Romero Berón Oscar">
+<option value="TS18 Fredy Hernandez">
 
-</select>
+</datalist>
 
 <label>Cuarto de equipo</label>
 
