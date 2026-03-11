@@ -125,6 +125,15 @@ color:gray;
 
 }
 
+.clock{
+
+font-size:14px;
+font-weight:bold;
+color:#2563eb;
+margin-bottom:20px;
+
+}
+
 </style>
 
 </head>
@@ -132,8 +141,13 @@ color:gray;
 <body>
 
 <div class="container">
+<img src="LOGO.PNG" class="logo">
 
 <h1>Registro de Ingreso</h1>
+
+<div class="clock" id="clock">
+Cargando hora...
+</div>
 
 <div class="subtitle">
 Cuartos de Equipos CACOM-1
@@ -247,7 +261,24 @@ alert("Error al registrar");
 
 });
 
+function actualizarReloj(){
+
+var ahora = new Date();
+
+var fecha = ahora.toLocaleDateString("es-CO");
+var hora = ahora.toLocaleTimeString("es-CO");
+
+document.getElementById("clock").innerHTML =
+"Fecha y hora actual: " + fecha + " - " + hora;
+
+}
+
+setInterval(actualizarReloj,1000);
+
+actualizarReloj();
+
 </script>
+
 
 </body>
 </html>
