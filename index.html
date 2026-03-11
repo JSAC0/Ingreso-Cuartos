@@ -1,67 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Registro Cuartos de Equipos CACOM-1</title>
 
 <style>
 
 body{
-font-family: Arial;
-background:#0f172a;
+margin:0;
+font-family: Arial, Helvetica, sans-serif;
+background: linear-gradient(135deg,#0f172a,#1e293b);
+min-height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
-height:100vh;
+justify-content:center;
+}
+
+/* Fondo tecnológico */
+
+body::before{
+
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(circle at 20% 30%, rgba(56,189,248,0.15) 2px, transparent 2px),
+radial-gradient(circle at 80% 70%, rgba(56,189,248,0.15) 2px, transparent 2px),
+radial-gradient(circle at 50% 50%, rgba(59,130,246,0.15) 2px, transparent 2px);
+
+background-size:120px 120px;
+z-index:-1;
+
 }
 
 .container{
 
 background:white;
-padding:40px;
+padding:35px;
 border-radius:12px;
-width:400px;
-box-shadow:0px 10px 30px rgba(0,0,0,0.3);
+width:90%;
+max-width:420px;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 
 }
 
-h2{
+h1{
+
 text-align:center;
-margin-bottom:20px;
+margin-bottom:5px;
+font-size:22px;
+
+}
+
+.subtitle{
+
+text-align:center;
+font-size:14px;
+color:gray;
+margin-bottom:25px;
+
 }
 
 label{
+
 font-weight:bold;
+font-size:14px;
+
 }
 
-select,input,textarea{
+select,textarea{
 
 width:100%;
-padding:10px;
-margin-top:5px;
-margin-bottom:15px;
+padding:12px;
+margin-top:6px;
+margin-bottom:18px;
+
 border-radius:6px;
 border:1px solid #ccc;
+
+font-size:14px;
 
 }
 
 button{
 
 width:100%;
-padding:12px;
-background:#1d4ed8;
+padding:14px;
+
+background:#2563eb;
 color:white;
+
 border:none;
 border-radius:8px;
+
 font-size:16px;
+font-weight:bold;
+
 cursor:pointer;
+
+transition:0.2s;
 
 }
 
 button:hover{
-background:#1e40af;
+
+background:#1d4ed8;
+
+}
+
+.footer{
+
+margin-top:15px;
+font-size:12px;
+text-align:center;
+color:gray;
+
 }
 
 </style>
@@ -72,12 +133,22 @@ background:#1e40af;
 
 <div class="container">
 
-<h2>Registro Cuartos de Equipos</h2>
+<h1>Registro de Ingreso</h1>
+
+<div class="subtitle">
+Cuartos de Equipos CACOM-1
+</div>
+
+<form id="registroForm">
 
 <label>Nombre</label>
-<select id="nombre">
 
-<option>CT Tabares Zapata Verónica</option>
+<select id="nombre" required>
+
+<option value="" disabled selected>
+Elija su nombre del listado
+</option>
+
 <option>ST Agressoth Cardona Jassir</option>
 <option>ST Cruz Reinoso Juan</option>
 <option>T1 Paipilla Rodriguez German</option>
@@ -90,7 +161,11 @@ background:#1e40af;
 
 <label>Cuarto de equipo</label>
 
-<select id="cuarto">
+<select id="cuarto" required>
+
+<option value="" disabled selected>
+Seleccione el cuarto al que ingresa
+</option>
 
 <option>ACCOFA</option>
 <option>INGENIERÍA</option>
@@ -103,7 +178,11 @@ background:#1e40af;
 
 <label>Actividad</label>
 
-<select id="actividad">
+<select id="actividad" required>
+
+<option value="" disabled selected>
+Seleccione la actividad que realizará
+</option>
 
 <option>Revista</option>
 <option>Acompañamiento</option>
@@ -114,17 +193,31 @@ background:#1e40af;
 
 <label>Observaciones</label>
 
-<textarea id="observaciones"></textarea>
+<textarea id="observaciones" placeholder="Escriba aquí alguna novedad relevante (opcional)"></textarea>
 
-<button onclick="enviar()">Registrar ingreso</button>
+<button type="submit">
+
+Registrar ingreso
+
+</button>
+
+</form>
+
+<div class="footer">
+
+Sistema de registro CACOM-1
+
+</div>
 
 </div>
 
 <script>
 
-function enviar(){
+document.getElementById("registroForm").addEventListener("submit", function(e){
 
-var datos={
+e.preventDefault();
+
+var datos = {
 
 nombre:document.getElementById("nombre").value,
 cuarto:document.getElementById("cuarto").value,
@@ -139,13 +232,22 @@ method:"POST",
 body:JSON.stringify(datos)
 
 })
-.then(res=>alert("Registro guardado correctamente"))
-.catch(err=>alert("Error"));
+.then(res=>{
 
-}
+alert("Ingreso registrado correctamente");
+
+document.getElementById("registroForm").reset();
+
+})
+.catch(err=>{
+
+alert("Error al registrar");
+
+});
+
+});
 
 </script>
 
 </body>
-
 </html>
