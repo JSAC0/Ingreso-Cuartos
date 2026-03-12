@@ -311,7 +311,8 @@ Cuartos de Equipos CACOM-1
 
 <input 
 type="text" 
-name="nombre" 
+id="nombre"
+name="nombre"
 list="listaNombres"
 placeholder="Escriba su nombre o selecciónelo del listado"
 required
@@ -332,7 +333,7 @@ required
 
 <label>Cuarto de equipo</label>
 
-<select id="cuarto" required>
+<select id="cuarto" name="cuarto" required>
 
 <option value="" disabled selected>
 Seleccione el cuarto al que ingresa
@@ -349,7 +350,7 @@ Seleccione el cuarto al que ingresa
 
 <label>Actividad</label>
 
-<select id="actividad" required>
+<select id="actividad" name="actividad" required>
 
 <option value="" disabled selected>
 Seleccione la actividad que realizará
@@ -420,7 +421,7 @@ document.getElementById("mensajeConfirmacion").style.display="block";
 
 document.getElementById("sonidoConfirmacion").play();
 
-form.reset();
+document.getElementById("registroForm").reset();
 
 setTimeout(function(){
 
